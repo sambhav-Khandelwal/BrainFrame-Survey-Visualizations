@@ -1,0 +1,313 @@
+
+<h2 class="sr-only">BrainFrame survey data visualizations for 150 respondents, organized by 4 behavioral drivers: Economic Pressure, Psychological Risk, System Friction, and HR Gap.</h2>
+
+<style>
+  .section-label { font-size: 11px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-text-secondary); margin: 0 0 6px; }
+  .chart-title { font-size: 14px; font-weight: 500; color: var(--color-text-primary); margin: 0 0 4px; }
+  .chart-sub { font-size: 12px; color: var(--color-text-secondary); margin: 0 0 12px; }
+  .driver-card { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 16px 20px; }
+  .grid2 { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 16px; margin-bottom: 16px; }
+  .grid3 { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr) minmax(0,1fr); gap: 16px; margin-bottom: 16px; }
+  .insight-pill { display: inline-block; font-size: 12px; padding: 4px 10px; border-radius: 20px; margin-top: 8px; }
+  .legend-row { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 8px; font-size: 12px; color: var(--color-text-secondary); }
+  .leg-dot { width: 10px; height: 10px; border-radius: 2px; display: inline-block; margin-right: 4px; vertical-align: middle; }
+  .stat-row { display: flex; gap: 12px; margin-top: 10px; }
+  .stat-box { flex: 1; background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding: 10px 12px; }
+  .stat-num { font-size: 22px; font-weight: 500; color: var(--color-text-primary); }
+  .stat-lbl { font-size: 11px; color: var(--color-text-secondary); margin-top: 2px; }
+  @media (max-width: 600px) { .grid2, .grid3 { grid-template-columns: 1fr; } }
+</style>
+
+<div style="padding: 8px 0 24px;">
+
+  <p style="font-size: 13px; color: var(--color-text-secondary); margin: 0 0 20px;">Survey responses · n = 150 riders · 4 behavioral drivers mapped</p>
+
+  <!-- DEMOGRAPHICS ROW -->
+  <p class="section-label">Demographics</p>
+  <div class="grid3">
+    <div class="driver-card">
+      <p class="chart-title">Vehicle type</p>
+      <p class="chart-sub">Q1 · n=150</p>
+      <div class="legend-row">
+        <span><span class="leg-dot" style="background:#378ADD;"></span>E-Scooter/Bike 67%</span>
+        <span><span class="leg-dot" style="background:#1D9E75;"></span>E-Rickshaw 27%</span>
+        <span><span class="leg-dot" style="background:#888780;"></span>Other 6%</span>
+      </div>
+      <div style="position:relative;height:180px;"><canvas id="c1" role="img" aria-label="Donut chart showing vehicle type distribution">E-Scooter 67%, E-Rickshaw 27%, Other 6%</canvas></div>
+    </div>
+    <div class="driver-card">
+      <p class="chart-title">Duration of usage</p>
+      <p class="chart-sub">Q2 · n=150</p>
+      <div class="legend-row">
+        <span><span class="leg-dot" style="background:#EF9F27;"></span>&lt;1 mo 10%</span>
+        <span><span class="leg-dot" style="background:#BA7517;"></span>1–6 mo 35%</span>
+        <span><span class="leg-dot" style="background:#854F0B;"></span>6–12 mo 30%</span>
+        <span><span class="leg-dot" style="background:#633806;"></span>&gt;1 yr 25%</span>
+      </div>
+      <div style="position:relative;height:180px;"><canvas id="c2" role="img" aria-label="Donut chart showing duration of usage">Under 1 month 10%, 1 to 6 months 35%, 6 to 12 months 30%, over 1 year 25%</canvas></div>
+    </div>
+    <div class="driver-card">
+      <p class="chart-title">Swaps per day</p>
+      <p class="chart-sub">Q3 · n=150</p>
+      <div class="legend-row">
+        <span><span class="leg-dot" style="background:#B5D4F4;"></span>1 swap 10%</span>
+        <span><span class="leg-dot" style="background:#378ADD;"></span>2–3 35%</span>
+        <span><span class="leg-dot" style="background:#185FA5;"></span>4–5 35%</span>
+        <span><span class="leg-dot" style="background:#042C53;"></span>5+ 20%</span>
+      </div>
+      <div style="position:relative;height:180px;"><canvas id="c3" role="img" aria-label="Donut chart showing swaps per day">1 swap 10%, 2 to 3 swaps 35%, 4 to 5 swaps 35%, over 5 swaps 20%</canvas></div>
+    </div>
+  </div>
+
+  <!-- DRIVER 1: ECONOMIC PRESSURE -->
+  <p class="section-label" style="margin-top:8px;">Driver 1 — Economic pressure</p>
+  <div class="grid2">
+    <div class="driver-card" style="border-left: 3px solid #D85A30;">
+      <p class="chart-title">Swap cost perceived as fair?</p>
+      <p class="chart-sub">Q4 · Likert scale · n=150</p>
+      <div style="position:relative;height:200px;"><canvas id="c4" role="img" aria-label="Horizontal bar chart showing swap cost fairness perception">Strongly agree 10%, Agree 20%, Neutral 15%, Disagree 30%, Strongly disagree 25%</canvas></div>
+      <div class="insight-pill" style="background:#FAECE7; color:#993C1D;">55% feel swap cost is unfairly high</div>
+    </div>
+    <div class="driver-card" style="border-left: 3px solid #D85A30;">
+      <p class="chart-title">Frustration on low-income days</p>
+      <p class="chart-sub">Q5 · 7-point scale collapsed · n=150</p>
+      <div style="position:relative;height:200px;"><canvas id="c5" role="img" aria-label="Gauge-style bar chart of frustration levels on low income days">Low frustration 1-2 is 10%, Medium 3-4 is 25%, High 5-7 is 65%</canvas></div>
+      <div class="insight-pill" style="background:#FAECE7; color:#993C1D;">65% report high frustration → economic rationalization trigger</div>
+    </div>
+  </div>
+
+  <!-- DRIVER 2: PSYCHOLOGICAL -->
+  <p class="section-label" style="margin-top:8px;">Driver 2 — Psychological &amp; peer influence</p>
+  <div class="grid2">
+    <div class="driver-card" style="border-left: 3px solid #7F77DD;">
+      <p class="chart-title">Witnessed peer misuse?</p>
+      <p class="chart-sub">Q6 · n=150</p>
+      <div class="legend-row">
+        <span><span class="leg-dot" style="background:#534AB7;"></span>Yes, frequently 30%</span>
+        <span><span class="leg-dot" style="background:#AFA9EC;"></span>Yes, once/twice 40%</span>
+        <span><span class="leg-dot" style="background:#D3D1C7;"></span>Never 30%</span>
+      </div>
+      <div style="position:relative;height:200px;"><canvas id="c6" role="img" aria-label="Pie chart showing peer misuse witnessing">Yes frequently 30%, yes once or twice 40%, never 30%</canvas></div>
+      <div class="insight-pill" style="background:#EEEDFE; color:#3C3489;">70% have witnessed misuse → normalization effect confirmed</div>
+    </div>
+    <div class="driver-card" style="border-left: 3px solid #7F77DD;">
+      <p class="chart-title">Would AI monitoring change behaviour?</p>
+      <p class="chart-sub">Q7 · n=150</p>
+      <div style="position:relative;height:200px;"><canvas id="c7" role="img" aria-label="Horizontal bar chart of AI monitoring impact on behaviour">Yes significantly 50%, Somewhat 30%, Already honest 10%, No effect 10%</canvas></div>
+      <div class="insight-pill" style="background:#EEEDFE; color:#3C3489;">80% open to deterrence → validates AI monitoring nudge</div>
+    </div>
+  </div>
+
+  <!-- DRIVER 3: SYSTEM FRICTION -->
+  <p class="section-label" style="margin-top:8px;">Driver 3 — System friction</p>
+  <div class="grid2">
+    <div class="driver-card" style="border-left: 3px solid #1D9E75;">
+      <p class="chart-title">Station non-functionality frequency</p>
+      <p class="chart-sub">Q8 · n=150</p>
+      <div style="position:relative;height:200px;"><canvas id="c8" role="img" aria-label="Bar chart showing station non-functionality frequency">Rarely 20%, Sometimes 40%, Frequently 25%, Almost always 15%</canvas></div>
+      <div class="insight-pill" style="background:#E1F5EE; color:#085041;">80% face station issues at least sometimes → frustration loop</div>
+    </div>
+    <div class="driver-card" style="border-left: 3px solid #1D9E75;">
+      <p class="chart-title">Forced into difficult/unplanned decision?</p>
+      <p class="chart-sub">Q9 · n=150</p>
+      <div style="position:relative;height:200px;"><canvas id="c9" role="img" aria-label="Bar chart of riders forced into difficult decisions">Yes high stress 40%, Yes manageable 35%, No 25%</canvas></div>
+      <div class="insight-pill" style="background:#E1F5EE; color:#085041;">75% forced into unplanned decisions → shortcut-taking risk rises</div>
+    </div>
+  </div>
+
+  <!-- DRIVER 4: HR GAP -->
+  <p class="section-label" style="margin-top:8px;">Driver 4 — HR gap</p>
+  <div class="grid2">
+    <div class="driver-card" style="border-left: 3px solid #E24B4A;">
+      <p class="chart-title">Onboarding received?</p>
+      <p class="chart-sub">Q10 · n=150</p>
+      <div class="legend-row">
+        <span><span class="leg-dot" style="background:#639922;"></span>Detailed 15%</span>
+        <span><span class="leg-dot" style="background:#EF9F27;"></span>Brief 35%</span>
+        <span><span class="leg-dot" style="background:#E24B4A;"></span>None 50%</span>
+      </div>
+      <div style="position:relative;height:200px;"><canvas id="c10" role="img" aria-label="Donut chart showing onboarding received">Detailed 15%, Brief 35%, None 50%</canvas></div>
+      <div class="insight-pill" style="background:#FCEBEB; color:#A32D2D;">50% received zero onboarding → biggest HR gap signal</div>
+    </div>
+    <div class="driver-card" style="border-left: 3px solid #E24B4A;">
+      <p class="chart-title">Functional complaint channel available?</p>
+      <p class="chart-sub">Q11 · n=150</p>
+      <div style="position:relative;height:200px;"><canvas id="c11" role="img" aria-label="Bar chart of complaint channel availability">Works well 20%, Slow or broken 35%, No channel exists 45%</canvas></div>
+      <div class="insight-pill" style="background:#FCEBEB; color:#A32D2D;">80% lack a working grievance channel → disengagement loop</div>
+    </div>
+  </div>
+
+  <!-- NUDGE VALIDATION -->
+  <p class="section-label" style="margin-top:8px;">Nudge validation</p>
+  <div class="grid3">
+    <div class="driver-card">
+      <p class="chart-title">Loyalty program impact</p>
+      <p class="chart-sub">Q12 · n=150</p>
+      <div style="position:relative;height:160px;"><canvas id="c12" role="img" aria-label="Bar chart showing loyalty program receptivity">Definitely 45%, Probably 35%, Unlikely 10%, No change 10%</canvas></div>
+      <div class="insight-pill" style="background:#E1F5EE; color:#085041;">80% receptive → gamification works</div>
+    </div>
+    <div class="driver-card">
+      <p class="chart-title">Social proof message effect</p>
+      <p class="chart-sub">Q13 · n=150</p>
+      <div style="position:relative;height:160px;"><canvas id="c13" role="img" aria-label="Bar chart of social proof message effectiveness">Strong positive 40%, Mild 35%, No effect 15%, Ignore 10%</canvas></div>
+      <div class="insight-pill" style="background:#E1F5EE; color:#085041;">75% respond positively → validates "97% honest" nudge</div>
+    </div>
+    <div class="driver-card">
+      <p class="chart-title">Comfort with data monitoring</p>
+      <p class="chart-sub">Q14 · 5-point scale collapsed · n=150</p>
+      <div style="position:relative;height:160px;"><canvas id="c14" role="img" aria-label="Bar chart of comfort with data monitoring">Uncomfortable 1-2 is 20%, Neutral 3 is 25%, Comfortable 4-5 is 55%</canvas></div>
+      <div class="insight-pill" style="background:#E1F5EE; color:#085041;">55% comfortable if framed as safety</div>
+    </div>
+  </div>
+
+  <!-- KEY INSIGHTS SUMMARY -->
+  <div style="background:var(--color-background-secondary);border-radius:var(--border-radius-lg);padding:16px 20px;margin-top:8px;">
+    <p style="font-size:13px;font-weight:500;color:var(--color-text-primary);margin:0 0 12px;">Key insights summary (n=150)</p>
+    <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8px;">
+      <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--color-text-primary);"><span style="width:8px;height:8px;border-radius:50%;background:#D85A30;flex-shrink:0;"></span>83 riders (55%) feel swap cost is unfairly high</div>
+      <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--color-text-primary);"><span style="width:8px;height:8px;border-radius:50%;background:#7F77DD;flex-shrink:0;"></span>105 riders (70%) have witnessed peer misuse</div>
+      <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--color-text-primary);"><span style="width:8px;height:8px;border-radius:50%;background:#1D9E75;flex-shrink:0;"></span>120 riders (80%) face station issues regularly</div>
+      <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--color-text-primary);"><span style="width:8px;height:8px;border-radius:50%;background:#E24B4A;flex-shrink:0;"></span>75 riders (50%) received zero onboarding</div>
+      <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--color-text-primary);"><span style="width:8px;height:8px;border-radius:50%;background:#1D9E75;flex-shrink:0;"></span>120 riders (80%) open to loyalty incentives</div>
+      <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--color-text-primary);"><span style="width:8px;height:8px;border-radius:50%;background:#7F77DD;flex-shrink:0;"></span>83 riders (55%) comfortable with AI monitoring</div>
+    </div>
+  </div>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script>
+const coral = '#D85A30', coralL = '#F0997B', coralLL = '#FAECE7';
+const purple = '#534AB7', purpleL = '#AFA9EC';
+const teal = '#1D9E75', tealL = '#5DCAA5', tealLL = '#9FE1CB';
+const red = '#E24B4A', redL = '#F09595';
+const blue = '#378ADD', blueL = '#85B7EB', blueLL = '#B5D4F4';
+const amber = '#EF9F27', amberL = '#FAC775';
+const gray = '#888780', grayL = '#B4B2A9', grayLL = '#D3D1C7';
+const green = '#639922';
+
+const isDark = matchMedia('(prefers-color-scheme: dark)').matches;
+const textColor = isDark ? 'rgba(255,255,255,0.75)' : 'rgba(0,0,0,0.6)';
+const gridColor = isDark ? 'rgba(255,255,255,0.08)' : 'rgba(0,0,0,0.07)';
+
+const baseBar = (labels, data, colors, title) => ({
+  type: 'bar',
+  data: { labels, datasets: [{ data, backgroundColor: colors, borderRadius: 4, borderSkipped: false }] },
+  options: {
+    indexAxis: 'y', responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => ` ${c.raw} riders (${Math.round(c.raw/150*100)}%)` } } },
+    scales: {
+      x: { grid: { color: gridColor }, ticks: { color: textColor, font: { size: 11 }, callback: v => v + ' riders' }, border: { display: false } },
+      y: { grid: { display: false }, ticks: { color: textColor, font: { size: 11 } }, border: { display: false } }
+    }
+  }
+});
+
+const baseDonut = (labels, data, colors) => ({
+  type: 'doughnut',
+  data: { labels, datasets: [{ data, backgroundColor: colors, borderWidth: 0, hoverOffset: 4 }] },
+  options: {
+    responsive: true, maintainAspectRatio: false, cutout: '60%',
+    plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => ` ${c.label}: ${c.raw} riders` } } }
+  }
+});
+
+const toN = pct => Math.round(pct * 1.5);
+
+new Chart('c1', baseDonut(['E-Scooter/Bike','E-Rickshaw','Other'], [toN(67),toN(27),toN(6)], [blue, teal, gray]));
+new Chart('c2', baseDonut(['< 1 month','1–6 months','6–12 months','> 1 year'], [15,53,45,37], [amberL, amber, '#BA7517', '#633806']));
+new Chart('c3', baseDonut(['1 swap','2–3 swaps','4–5 swaps','5+ swaps'], [15,53,53,29], [blueLL, blueL, blue, '#042C53']));
+
+new Chart('c4', baseBar(
+  ['Strongly agree','Agree','Neutral','Disagree','Strongly disagree'],
+  [15, 30, 23, 45, 37],
+  [teal, tealL, gray, coral, '#993C1D'], 'cost'
+));
+
+new Chart('c5', {
+  type: 'bar',
+  data: { labels: ['Low (1–2)','Medium (3–4)','High (5–7)'], datasets: [{ data: [15,38,97], backgroundColor: [tealL, amber, coral], borderRadius: 4 }] },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => ` ${c.raw} riders (${Math.round(c.raw/150*100)}%)` } } },
+    scales: {
+      x: { grid: { display: false }, ticks: { color: textColor, font: { size: 11 } }, border: { display: false } },
+      y: { grid: { color: gridColor }, ticks: { color: textColor, font: { size: 11 }, callback: v => v+' riders' }, border: { display: false } }
+    }
+  }
+});
+
+new Chart('c6', baseDonut(['Yes, frequently','Yes, once/twice','Never'], [45,60,45], [purple, purpleL, grayLL]));
+
+new Chart('c7', baseBar(
+  ['Yes, significantly','Somewhat','Already honest','No effect'],
+  [75,45,15,15],
+  [purple, purpleL, grayL, grayLL], 'ai'
+));
+
+new Chart('c8', baseBar(
+  ['Rarely','Sometimes','Frequently','Almost always'],
+  [30,60,38,22],
+  [teal, amber, coral, '#993C1D'], 'station'
+));
+
+new Chart('c9', {
+  type: 'bar',
+  data: { labels: ['Yes – high stress','Yes – manageable','No'], datasets: [{ data: [60,53,37], backgroundColor: [coral, amber, teal], borderRadius: 4 }] },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => ` ${c.raw} riders (${Math.round(c.raw/150*100)}%)` } } },
+    scales: {
+      x: { grid: { display: false }, ticks: { color: textColor, font: { size: 11 } }, border: { display: false } },
+      y: { grid: { color: gridColor }, ticks: { color: textColor, font: { size: 11 }, callback: v => v+' riders' }, border: { display: false } }
+    }
+  }
+});
+
+new Chart('c10', baseDonut(['Detailed','Brief','None'], [23,53,74], [green, amber, red]));
+
+new Chart('c11', baseBar(
+  ['Works well','Slow / broken','No channel exists'],
+  [30,53,67],
+  [teal, amber, red], 'grievance'
+));
+
+new Chart('c12', {
+  type: 'bar',
+  data: { labels: ['Definitely','Probably','Unlikely','No change'], datasets: [{ data: [68,53,15,14], backgroundColor: [teal, tealL, grayL, grayLL], borderRadius: 4 }] },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => ` ${c.raw} riders (${Math.round(c.raw/150*100)}%)` } } },
+    scales: {
+      x: { grid: { display: false }, ticks: { color: textColor, font: { size: 11 } }, border: { display: false } },
+      y: { grid: { color: gridColor }, ticks: { color: textColor, font: { size: 11 }, callback: v => v }, border: { display: false } }
+    }
+  }
+});
+
+new Chart('c13', {
+  type: 'bar',
+  data: { labels: ['Strong positive','Mild positive','No effect','Will ignore'], datasets: [{ data: [60,53,23,14], backgroundColor: [teal, tealL, grayL, grayLL], borderRadius: 4 }] },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => ` ${c.raw} riders (${Math.round(c.raw/150*100)}%)` } } },
+    scales: {
+      x: { grid: { display: false }, ticks: { color: textColor, font: { size: 11 } }, border: { display: false } },
+      y: { grid: { color: gridColor }, ticks: { color: textColor, font: { size: 11 }, callback: v => v }, border: { display: false } }
+    }
+  }
+});
+
+new Chart('c14', {
+  type: 'bar',
+  data: { labels: ['Uncomfortable (1–2)','Neutral (3)','Comfortable (4–5)'], datasets: [{ data: [30,38,82], backgroundColor: [coral, amber, teal], borderRadius: 4 }] },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => ` ${c.raw} riders (${Math.round(c.raw/150*100)}%)` } } },
+    scales: {
+      x: { grid: { display: false }, ticks: { color: textColor, font: { size: 11 } }, border: { display: false } },
+      y: { grid: { color: gridColor }, ticks: { color: textColor, font: { size: 11 }, callback: v => v }, border: { display: false } }
+    }
+  }
+});
+</script>
